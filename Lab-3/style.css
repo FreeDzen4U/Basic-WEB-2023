@@ -1,0 +1,71 @@
+body {
+    background: linear-gradient(to left, #c6ffdd, #fbd786, #f7797d);
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+    width: 300px;
+    padding: 20px 30px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background-image: linear-gradient(to right, #f7797d 0%, #fbd786 51%, #c6ffdd 100%);
+    background-size: 200% auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    transition: .5s;
+}
+
+.button:hover {
+    background-position: right center;
+}
+    
+#listUsers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+#user {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 300px;
+    padding: 20px;
+    background-image: linear-gradient(to right, #c6ffdd 0%, #fbd786 51%, #f7797d 100%);
+    border: 2px solid;
+}
+
+span {
+    text-align: left;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+img {
+    width: 90px;
+    height: 90px;
+    padding: 10px;
+    border-radius: 30%;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto
+}
