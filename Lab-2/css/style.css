@@ -1,0 +1,65 @@
+/* Клас #main_box */
+#main_box {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+/* Клас button */
+button {
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px; /* Повторний стиль видалено */
+}
+
+/* Клас div і fieldset (подільні властивості) */
+div, fieldset {
+    width: max-content;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Клас fieldset */
+fieldset {
+    width: 300px;
+    display: inline;
+}
+
+/* Клас form */
+form {
+    display: flex;
+}
+
+/* Клас input[type='text'] і button (подільні властивості) */
+input[type='text'], button {
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Клас table і td (подільні властивості) */
+table, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Клас #sec_box */
+#sec_box {
+    margin: 20px;
+    margin-left: 55px;
+}
+
+/* Клас #tool */
+#tool {
+    width: 223px;
+    margin-bottom: 2px;
+    height: 20px;
+}

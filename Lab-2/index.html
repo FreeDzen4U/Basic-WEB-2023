@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8' />
+  <link rel="stylesheet" href="css/style.css">
+  <title>Собченко Я.І. ІО-02</title>
+</head>
+<body>
+<div id='main_box'>
+<fieldset>
+        <h2>Форма для заповнення</h2>
+        <label for='name'>ПІБ</label>
+        <input id='name' type='text' placeholder='ТТТТТТ Т.Т.'
+                overmouse='mouseRand(this)' leavemouse='mouseClear(this)'>
+
+        <label for='variant'>Варіант</label>
+        <input id='variant' type='text' placeholder='ЧЧ'
+                overmouse='mouseRand(this)' leavemouse='mouseClear(this)'>        
+
+        <label for='group'>Група</label>
+        <input id='group' type='text' placeholder='ТТ-ЧЧ'
+                overmouse='mouseRand(this)' leavemouse='mouseClear(this)'>
+
+        <label for='number'>Телефон</label>
+        <input id='number' type='text' placeholder='ЧЧЧ-ЧЧЧ-ЧЧ-ЧЧ'
+                overmouse='mouseRand(this)' leavemouse='mouseClear(this)'>
+
+        <label for='idCard'>ID-card</label>
+        <input id='idCard' type='text' placeholder='ТТ №ЧЧЧЧЧЧ'
+                overmouse='mouseRand(this)' leavemouse='mouseClear(this)'> 
+
+        <button type='button' onclick='valid()'>Підтвердити</button>
+  </fieldset>
+</div>
+<div id='sec_box'>
+    <input type='color' id='tool'>
+</div>
+<script src='js/script.js'></script>
+</body>
+</html>
