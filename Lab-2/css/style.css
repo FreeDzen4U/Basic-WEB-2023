@@ -13,10 +13,10 @@ button {
     margin: 5px 0;
     width: 100%;
     box-sizing: border-box;
-    border-radius: 5px; /* Повторний стиль видалено */
+    border-radius: 5px;
 }
 
-/* Клас div і fieldset (подільні властивості) */
+/* Клас div і fieldset*/
 div, fieldset {
     width: max-content;
     margin: 0 auto;
@@ -34,7 +34,7 @@ form {
     display: flex;
 }
 
-/* Клас input[type='text'] і button (подільні властивості) */
+/* Клас input[type='text'] і button */
 input[type='text'], button {
     border-radius: 5px;
     padding: 10px;
@@ -43,7 +43,7 @@ input[type='text'], button {
     box-sizing: border-box;
 }
 
-/* Клас table і td (подільні властивості) */
+/* Клас table і td*/
 table, td {
     border: 1px solid black;
     border-collapse: collapse;
