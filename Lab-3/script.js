@@ -40,8 +40,8 @@ class Person {
         picture.src = this.picture.medium;
         user.appendChild(picture);
 
-        const name = document.createElement('span');     
-        name.innerHTML = `Name: <em>${this.name.title} ${this.name.first} ${this.name.last}</em>`
+        const name = document.createElement('upper-span');     
+        name.innerHTML = `<em>${this.name.first} ${this.name.last}</em>`
         user.appendChild(name);
 
         const cell = document.createElement('span');
