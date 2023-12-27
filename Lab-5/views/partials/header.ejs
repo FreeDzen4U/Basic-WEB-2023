@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Authentication Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="../libs/bootstrap.css" />
+  </head>
+
+  <body class="min-h-screen bg-gray-50 bg-fixed bg-bottom bg-no-repeat">
+    <nav class="bg-green-700">
+      <div
+        class="container mx-auto flex items-center justify-between p-6 gap-5 flex-col lg:flex-row"
+      >
+        <a class="text-white text-3xl font-bold" href="/dashboard"
+          ><b>Authentication Project</b></a
+        >
+        <div class="space-x-4">
+          <% if(currentUser) { %>
+          <span
+            class="rounded-md bg-green-600 py-2 px-4 font-semibold text-white shadow-lg transition duration-150 ease-in-out hover:bg-green-700 hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+            ><%= currentUser.name %></span
+          >
+          <a
+            href="/password/change"
+            class="rounded-md bg-green-600 py-2 px-4 font-semibold text-white shadow-lg transition duration-150 ease-in-out hover:bg-green-700 hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+            >Change Password</a
+          >
+          <a
+            href="/logout"
+            class="rounded-md bg-green-600 py-2 px-4 font-semibold text-white shadow-lg transition duration-150 ease-in-out hover:bg-green-700 hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+            >Logout</a
+          >
+          <% } %>
+        </div>
+      </div>
+    </nav>
+  </body>
+</html>

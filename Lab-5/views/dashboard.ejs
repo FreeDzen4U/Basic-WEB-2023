@@ -1,0 +1,246 @@
+<%- include('partials/header') -%>
+<div class="flex flex-col justify-center p-6 pb-12">
+  <h1 class="text-3xl font-bold text-gray-900 text-center">Dashboard</h1>
+  <div class="flex flex-col md:flex-row gap-5">
+    <div
+      class="mx-auto mt-4 w-full max-w-md rounded-xl bg-white/80 p-6 shadow-xl backdrop-blur-xl sm:mt-10 sm:p-10"
+    >
+      <%- include('partials/messages') -%>
+      <form id="form" class="space-y-6">
+        <div>
+          <label for="username" class="block text-sm font-medium text-gray-700"
+            >ПІБ</label
+          >
+          <div class="relative mt-1 rounded-md shadow-sm">
+            <input
+              type="text"
+              id="username-input"
+              name="username"
+              class="w-full rounded-md border-gray-300 pl-3 text-sm focus:border-green-500 focus:ring-green-500 py-3"
+              placeholder="ТТТТТТ Т.Т."
+            />
+          </div>
+          <div class="error text-red-700 text-sm" id="username-error"></div>
+        </div>
+
+        <div>
+          <label for="faculty" class="block text-sm font-medium text-gray-700"
+            >Факультет</label
+          >
+          <div class="relative mt-1 rounded-md shadow-sm">
+            <input
+              type="text"
+              id="faculty-input"
+              name="faculty"
+              class="w-full rounded-md border-gray-300 pl-3 text-sm focus:border-green-500 focus:ring-green-500 py-3"
+              placeholder="ТТТТ"
+            />
+          </div>
+          <div class="error text-red-700 text-sm" id="faculty-error"></div>
+        </div>
+
+        <div>
+          <label for="birthday" class="block text-sm font-medium text-gray-700"
+            >Дата народження</label
+          >
+          <div class="relative mt-1 rounded-md shadow-sm">
+            <input
+              type="text"
+              id="birthday-input"
+              name="birthday"
+              class="w-full rounded-md border-gray-300 pl-3 text-sm focus:border-green-500 focus:ring-green-500 py-3"
+              placeholder="ЧЧ.ЧЧ.ЧЧЧЧ"
+            />
+          </div>
+          <div class="error text-red-700 text-sm" id="birthday-error"></div>
+        </div>
+
+        <div>
+          <label for="address" class="block text-sm font-medium text-gray-700"
+            >Адреса</label
+          >
+          <div class="relative mt-1 rounded-md shadow-sm">
+            <input
+              type="text"
+              id="address-input"
+              name="address"
+              class="w-full rounded-md border-gray-300 pl-3 text-sm focus:border-green-500 focus:ring-green-500 py-3"
+              placeholder="м. ТТТТТ"
+            />
+          </div>
+          <div class="error text-red-700 text-sm" id="address-error"></div>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700"
+            >E-mail</label
+          >
+          <div class="relative mt-1 rounded-md shadow-sm">
+            <input
+              type="text"
+              id="email-input"
+              name="email"
+              class="w-full rounded-md border-gray-300 pl-3 text-sm focus:border-green-500 focus:ring-green-500 py-3"
+              placeholder="тттттт@ттттт.com"
+            />
+          </div>
+          <div class="error text-red-700 text-sm" id="email-error"></div>
+        </div>
+
+        <div class="input-control">
+          <button
+            type="submit"
+            class="flex items-center w-full justify-center rounded-md bg-green-600 py-2 px-4 font-semibold text-white shadow-lg transition duration-150 ease-in-out hover:bg-green-700 hover:shadow-xl focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+          >
+            Підтвердити
+          </button>
+        </div>
+      </form>
+    </div>
+    <div id="output" class="hidden flex-col justify-center p-6 pb-12">
+      <span
+        id="information"
+        class="block mt-4 px-4 py-2 text-green-800 rounded-lg"
+      ></span>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') -%>
+<script>
+  // Task 1
+  const form = document.getElementById("form");
+  const fields = {
+    username: /^[A-ZА-ЯІЇЄ][a-zа-яіїє]+ [A-ZА-ЯІЇЄ]\.[A-ZА-ЯІЇЄ]\.$/,
+    faculty: /^[А-ЯІЇЄҐа-яіїєґ\s]{4}$/u,
+    birthday: /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.\d{4}$/,
+    address: /^м\.\s[А-ЯІЇЄҐа-яіїєґ\s]+$/u,
+    email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+  };
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    validateInputs();
+  });
+
+  const setUsernameErrorMessage = (message, success) => {
+    const element = document.getElementById("username-error");
+    element.innerText = message;
+    element.classList.toggle("error", !success);
+    element.classList.toggle("success", success);
+  };
+
+  const setFacultyErrorMessage = (message, success) => {
+    const element = document.getElementById("faculty-error");
+    element.innerText = message;
+    element.classList.toggle("error", !success);
+    element.classList.toggle("success", success);
+  };
+
+  const setBirthdayErrorMessage = (message, success) => {
+    const element = document.getElementById("birthday-error");
+    element.innerText = message;
+    element.classList.toggle("error", !success);
+    element.classList.toggle("success", success);
+  };
+
+  const setAddressErrorMessage = (message, success) => {
+    const element = document.getElementById("address-error");
+    element.innerText = message;
+    element.classList.toggle("error", !success);
+    element.classList.toggle("success", success);
+  };
+
+  const setEmailErrorMessage = (message, success) => {
+    const element = document.getElementById("email-error");
+    element.innerText = message;
+    element.classList.toggle("error", !success);
+    element.classList.toggle("success", success);
+  };
+
+  const validateInputs = () => {
+    let success = true;
+
+    const usernameElement = document.getElementById("username-input");
+    const usernameValue = usernameElement.value.trim();
+
+    if (usernameValue === "") {
+      setUsernameErrorMessage("ПІБ обов'язковий", false);
+      success = false;
+    } else if (!fields.username.test(usernameValue)) {
+      setUsernameErrorMessage("Введіть правильний ПІБ", false);
+      success = false;
+    } else {
+      setUsernameErrorMessage("", true);
+    }
+
+    const facultyElement = document.getElementById("faculty-input");
+    const facultyValue = facultyElement.value.trim();
+
+    if (facultyValue === "") {
+      setFacultyErrorMessage("Факультет обов'язковий", false);
+      success = false;
+    } else if (!fields.faculty.test(facultyValue)) {
+      setFacultyErrorMessage("Введіть правильний факультет", false);
+      success = false;
+    } else {
+      setFacultyErrorMessage("", true);
+    }
+
+    const birthdayElement = document.getElementById("birthday-input");
+    const birthdayValue = birthdayElement.value.trim();
+
+    if (birthdayValue === "") {
+      setBirthdayErrorMessage("Дата народження обов'язкова", false);
+      success = false;
+    } else if (!fields.birthday.test(birthdayValue)) {
+      setBirthdayErrorMessage(
+        "Введіть правильну дату народження (ДД.ММ.РРРР)",
+        false
+      );
+      success = false;
+    } else {
+      setBirthdayErrorMessage("", true);
+    }
+
+    const addressElement = document.getElementById("address-input");
+    const addressValue = addressElement.value.trim();
+
+    if (addressValue === "") {
+      setAddressErrorMessage("Адреса обов'язкова", false);
+      success = false;
+    } else if (!fields.address.test(addressValue)) {
+      setAddressErrorMessage("Введіть правильну адресу (м. ТТТТТ)", false);
+      success = false;
+    } else {
+      setAddressErrorMessage("", true);
+    }
+
+    const emailElement = document.getElementById("email-input");
+    const emailValue = emailElement.value.trim();
+
+    if (emailValue === "") {
+      setEmailErrorMessage("Email обов'язковий", false);
+      success = false;
+    } else if (!fields.email.test(emailValue)) {
+      setEmailErrorMessage("Введіть правильний email", false);
+      success = false;
+    } else {
+      setEmailErrorMessage("", true);
+    }
+
+    if (success) {
+      const output = document.getElementById("output");
+      output.classList.remove("hidden");
+      output.classList.add("flex");
+
+      const information = document.getElementById("information");
+      information.classList.add("bg-green-200");
+      information.innerHTML = `<big><b><u><h1>Введені дані:</h1></u></b></big>`;
+
+      for (const fieldName in fields) {
+        const element = document.getElementById(`${fieldName}-input`);
+        information.innerHTML += `<b>${fieldName}:</b> <em>${element.value}</em><br>`;
+      }
+    }
+  };
+</script>
